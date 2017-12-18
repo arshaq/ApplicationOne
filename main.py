@@ -7,6 +7,10 @@ def findMeaning(searchTerm):
     searchTerm = searchTerm.lower()
     if searchTerm in data:
         return data[searchTerm]
+    elif searchTerm.capitalize() in data:           # For proper nouns
+        return data[searchTerm.capitalize()]
+    elif searchTerm.upper() in data:                # For acronyms and abbreviations
+        return data[searchTerm.upper()]
     else:
         closest_match = get_close_matches(searchTerm, data.keys(), n=1)
         if closest_match:
